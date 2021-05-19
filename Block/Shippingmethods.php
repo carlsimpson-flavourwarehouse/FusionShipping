@@ -34,3 +34,5 @@ class Shippingmethods extends \Magento\Framework\View\Element\Template
     }
 }
 ?>
+
+<?php echo getActiveShippingMethod() ?>
