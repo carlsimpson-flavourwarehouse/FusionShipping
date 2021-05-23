@@ -13,16 +13,15 @@
                     <argument translate="true" name="title" xsi:type="string">Shipping Information</argument>
                 </arguments>
             </block>
-            <!--<block class="Flavour\FusionShipping\Block\Product\View" name="countdown.tab" as="countdowntimer" template="product/view/countdown_timer.phtml" group="detailed_info" >-->
-                <!--<arguments>-->
-                    <!--<argument translate="true" name="title" xsi:type="string">Countdown Timer</argument>-->
-                <!--</arguments>-->
-            <!--</block>-->
         </referenceBlock>
         <referenceContainer name="product.info.main">
             <block class="Magento\Catalog\Block\Product\View" after="product.info.price"
                    as="custom"
                    template="Flavour_FusionShipping::product/view/offer_countdown.phtml"/>
+
+            <block class="Magento\Catalog\Block\Product\View" after="-"
+                   as="bespoke"
+                   template="Flavour_FusionShipping::product/view/test.phtml"/>
         </referenceContainer>
     </body>
 </page>
