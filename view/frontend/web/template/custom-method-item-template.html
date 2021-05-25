@@ -1,13 +1,15 @@
-<tr class="row"
-    click="element.selectShippingMethod">
+<!-- Initialize collapsible binding -->
+<tbody collapsible="as: '$collapsible_' + method.method_code">
+<tr class="row">
     <td class="col col-method">
         <input type="radio"
                class="radio"
+               click="element.selectShippingMethod"
                ifnot="method.error_message"
                ko-checked="element.isSelected"
                ko-value="method.carrier_code + '_' + method.method_code"
                attr="'aria-labelledby': 'label_method_' + method.method_code + '_' + method.carrier_code + ' ' + 'label_carrier_' + method.method_code + '_' + method.carrier_code,
-                   'checked': element.rates().length == 1 || element.isSelected" />
+                        'checked': element.rates().length == 1 || element.isSelected" />
     </td>
     <td class="col col-price">
         <each args="element.getRegion('price')" render="" />
@@ -18,27 +20,27 @@
     <td class="col col-carrier"
         attr="'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code"
         text="method.carrier_title" />
-</tr>
-<!-- ko if: ((method.method_code + '_' + method.carrier_code == "customshipping_customshipping") && element.selectedMethod() == "customshipping_customshipping") -->
-<tr class="custom-shipping-method-fields-shipping-information" >
-    <td colspan="4">
-        <div id="custom-shipping-method-fields-details-list-wrapper" data-bind="visible: method.method_code + '_' + method.carrier_code == 'customshipping_customshipping'">
-            <!-- ko foreach: element.getRegion('custom-shipping-method-fields') -->
-            <!-- ko template: getTemplate() --><!-- /ko -->
-            <!--/ko-->
-        </div>
+    <!-- Column with collapsible trigger  -->
+    <td class="col">
+        <a toggleCollapsible="'$collapsible_' + method.method_code">
+            <span data-bind="i18n: '00:00 Left to Order'"></span>
+        </a>
     </td>
 </tr>
-<!-- /ko -->
+<!-- Row for shipping method description -->
+<tr class="row" visible="$context['$collapsible_' + method.method_code].opened">
+    <td class="col" colspan="5" i18n="'Some description.'"/>
+</tr>
 <tr class="row row-error"
     if="method.error_message">
-    <td class="col col-error" colspan="4">
+    <td class="col col-error" colspan="5">
         <div role="alert" class="message error">
             <div text="method.error_message"></div>
         </div>
         <span class="no-display">
-           <input type="radio"
-                  attr="'value' : method.method_code, 'id': 's_method_' + method.method_code" />
-       </span>
+                <input type="radio"
+                       attr="'value' : method.method_code, 'id': 's_method_' + method.method_code" />
+            </span>
     </td>
 </tr>
+</tbody>

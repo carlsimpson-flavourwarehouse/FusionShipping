@@ -19,9 +19,9 @@
                    as="custom"
                    template="Flavour_FusionShipping::product/view/offer_countdown.phtml"/>
 
-            <block class="Magento\Catalog\Block\Product\View" after="-"
-                   as="bespoke"
-                   template="Flavour_FusionShipping::product/view/test.phtml"/>
+            <!--<block class="Magento\Catalog\Block\Product\View" after="-"-->
+                   <!--as="bespoke"-->
+                   <!--template="Flavour_FusionShipping::product/view/test.phtml"/>-->
         </referenceContainer>
     </body>
 </page>
