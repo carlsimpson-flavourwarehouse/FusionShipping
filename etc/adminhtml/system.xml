@@ -3,12 +3,14 @@
         <tab id="delivery-settings" translate="label" sortOrder="500">
             <label>Flavour Warehouse</label>
         </tab>
-
+        <!-- Custom  -->
         <section id="custom_module" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Settings</label>
+            <label>Delivery Carrier Settings</label>
             <tab>delivery-settings</tab>
             <resource>Flavour_FusionShipping::config_my_module</resource>
+
+            <!-- General Configuration -->
             <group id="enable" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
                 <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -17,23 +19,70 @@
                 </field>
             </group>
 
-            <group id="date" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+            <!-- Royal Mail Dynamic Cutoff Setting -->
+            <group id="royalmail" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
                    showInStore="1">
-                <label>General Settings</label>
+                <label>Royal Mail</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="cutofftime" translate="cut off time" type="time" sortOrder="4" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Cut off Time</label>
+                    <comment>
+                        <![CDATA[<strong style="color:red">Attention </strong>: Royal Mail Standard Cutoff Time is 3:30pm.]]>
+                    </comment>
+                </field>
+            </group>
 
+            <!-- DPD Dynamic Cutoff Setting -->
+            <group id="dpd" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>DPD</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="cutofftime" translate="cut off time" type="time" sortOrder="4" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Cut off Time</label>
+                    <comment>
+                        <![CDATA[<strong style="color:red">Attention </strong>: DPD Standard Cutoff Time is 6:30pm.]]>
+                    </comment>
+                </field>
+            </group>
+
+            <!-- Custom Date Entries For Bank Holidays -->
+            <group id="date" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Bank Holidays</label>
                 <field id="to_date" translate="label" type="date" sortOrder="15" showInDefault="1" showInWebsite="1"
                        showInStore="1">
-                    <label>To</label>
+                    <label>Start</label>
+                    <comment>
+                        <![CDATA[Custom Delivery Window Closes]]>
+                    </comment>
                     <frontend_model>Flavour\FusionShipping\Block\DatePicker</frontend_model>
                 </field>
 
-                <field id="from_date" translate="label" type="date" sortOrder="15" showInDefault="1" showInWebsite="1"
+                <field id="from_date" translate="label" type="date" sortOrder="20" showInDefault="1" showInWebsite="1"
                        showInStore="1">
-                    <label>From</label>
+                    <label>End</label>
+                    <comment>
+                        <![CDATA[Custom Delivery Window Opens]]>
+                    </comment>
                     <frontend_model>Flavour\FusionShipping\Block\DatePicker</frontend_model>
                 </field>
 
-
+                <!--<field id="list_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>List Mode</label>-->
+                    <!--<source_model>Flavour\FusionShipping\Model\Config\Source\ListMode</source_model>-->
+                <!--</field>-->
             </group>
         </section>
     </system>
