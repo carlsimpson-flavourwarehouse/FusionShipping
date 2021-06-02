@@ -1,10 +1,17 @@
 <!-- < ?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_info')->toHtml(); ?> -->
 
-
+<?php
+$blockObj= $block->getLayout()->createBlock('Flavour\FusionShipping\Block\View');
+$visible = $blockObj->canShowBlock();
+?>
 <h2>Custom Shipping Information</h2>
 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad debitis et magnam obcaecati porro quae repellendus ullam vitae voluptas voluptatem! Autem earum enim fugiat incidunt libero maxime obcaecati quam veritatis!</p>-->
 
 <?php
+if($visible)
+    echo "I'm visible";
+else
+    echo "i'm not visible";
 
 //$order = $block->getOrderItems();
 //$orderItems = $order->getAllItems();
