@@ -1,3 +1,12 @@
-<h5 class="timer-text">Hurry - Ends Soon!</h5>
+<?php
+$blockObj= $block->getLayout()->createBlock('Flavour\FusionShipping\Block\View');
+$visible = $blockObj->canShowBlock();
 
-<div>Offer closes in <span id="time">05:00</span> minutes!</div>
+if($visible){
+?>
+    <h5 class="timer-text">Hurry - Ends Soon!</h5>
+
+    <div>Offer closes in <span id="time">05:00</span> minutes!</div>
+<?php
+}
+?>

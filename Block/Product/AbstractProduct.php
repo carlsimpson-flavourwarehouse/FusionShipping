@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Fusion\FusionShipping\Block\Product;
+namespace Flavour\FusionShipping\Block\Product;
 
 /**
  * Class AbstractProduct
