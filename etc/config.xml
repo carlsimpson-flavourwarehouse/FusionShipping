@@ -7,10 +7,5 @@
             </general>
 
         </custom_settings>
-        <qbdesktop>
-            <general>
-                <enable>1</enable>
-            </general>
-        </qbdesktop>
     </default>
 </config>
