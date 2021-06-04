@@ -1,11 +1,33 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <custom_settings>
-            <general>
-                <enable>1</enable>
-            </general>
+        <!--
 
-        </custom_settings>
+        group id="royalmail"
+        field id="cutofftime"
+        
+        -->
+        <custom_module>
+            <enable>
+                <enable>1</enable>
+            </enable>
+
+
+            <royalmail>
+                <enable>1</enable>
+                <cutofftime></cutofftime>
+            </royalmail>
+
+            <dpd>
+                <enable>1</enable>
+                <cutofftime></cutofftime>
+            </dpd>
+
+            <date>
+                <to_date></to_date>
+                <from_date></from_date>
+            </date>
+
+        </custom_module>
     </default>
 </config>
