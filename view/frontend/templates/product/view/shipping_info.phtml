@@ -1,22 +1,106 @@
-<!-- < ?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_info')->toHtml(); ?> -->
+<script>
 
+    require([ 'jquery', 'jquery/ui'], function($){ $(document).ready(function($) {
+
+    Date.prototype.addHours = function (h) {
+        this.setHours(this.getHours() + h);
+        return this;
+    };
+
+    var now = new Date();
+    var royalmail = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        15,
+        30,
+        0,
+        0
+    );
+    var dpd = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        18,
+        30,
+        0,
+        0
+    );
+
+    var carrier1 = "royalmail";
+    var carrier2 = "dpd";
+
+    if (carrier1 === "royalmail") {
+        var selected_carrier = royalmail;
+        var selectedCarrier = selected_carrier;
+
+        var selectedCarrier_name = carrier1;
+        var dateFuture = selectedCarrier;
+        var dateNow = new Date();
+
+        var seconds = Math.floor((dateFuture - dateNow) / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
+
+        hours = hours - days * 24;
+        minutes = minutes - days * 24 * 60 - hours * 60;
+
+        document.getElementById("custom_royalmail").innerHTML = hours + "h:" + minutes + "m to place a " + selectedCarrier_name + " Order ";
+
+    }
+
+    if (carrier2 === "dpd") {
+        var selected_carrier = dpd;
+        var selectedCarrier = selected_carrier;
+
+        var selectedCarrier_name = carrier2;
+        var dateFuture = selectedCarrier;
+        var dateNow = new Date();
+
+        var seconds = Math.floor((dateFuture - dateNow) / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
+
+        hours = hours - days * 24;
+        minutes = minutes - days * 24 * 60 - hours * 60;
+
+        document.getElementById("custom_dpd").innerHTML = hours + "h:" + minutes + "m to place a " + selectedCarrier_name + " Order ";
+
+    }
+
+    });
+});
+</script>
 <?php
 $blockObj= $block->getLayout()->createBlock('Flavour\FusionShipping\Block\View');
 $visible = $blockObj->canShowBlock();
+
 ?>
 <h2>Custom Shipping Information</h2>
-<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad debitis et magnam obcaecati porro quae repellendus ullam vitae voluptas voluptatem! Autem earum enim fugiat incidunt libero maxime obcaecati quam veritatis!</p>-->
+
+
+<? if ($visible): ?>
+
+<div>
+    <p id="custom_royalmail"></p>
+    <p id="custom_dpd"></p>
+</div>
+
+
+
+<? elseif ($other_condition): ?>
+    <?= "i'm not visible"; ?>
+  <p>Custom Delivery Information unavailable</p>
+<? endif; ?>
 
 <?php
-if($visible)
-    echo "I'm visible";
-else
-    echo "i'm not visible";
 
 //$order = $block->getOrderItems();
 //$orderItems = $order->getAllItems();
 //$code = $orderItems->getShippingMethod();
-//
+
 //echo 'order' . $code;
 
 //$order->getShippingMethod();
