@@ -7,7 +7,7 @@
         field id="cutofftime"
         
         -->
-        <custom_module>
+        <flavour_fusionshipping>
             <enable>
                 <enable>1</enable>
             </enable>
@@ -28,6 +28,6 @@
                 <from_date></from_date>
             </date>
 
-        </custom_module>
+        </flavour_fusionshipping>
     </default>
 </config>

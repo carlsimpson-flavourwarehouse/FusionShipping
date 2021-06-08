@@ -1,98 +1,106 @@
-<script>
-
-    require([ 'jquery', 'jquery/ui'], function($){ $(document).ready(function($) {
-
-    Date.prototype.addHours = function (h) {
-        this.setHours(this.getHours() + h);
-        return this;
-    };
-
-    var now = new Date();
-    var royalmail = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        15,
-        30,
-        0,
-        0
-    );
-    var dpd = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        18,
-        30,
-        0,
-        0
-    );
-
-    var carrier1 = "royalmail";
-    var carrier2 = "dpd";
-
-    if (carrier1 === "royalmail") {
-        var selected_carrier = royalmail;
-        var selectedCarrier = selected_carrier;
-
-        var selectedCarrier_name = carrier1;
-        var dateFuture = selectedCarrier;
-        var dateNow = new Date();
-
-        var seconds = Math.floor((dateFuture - dateNow) / 1000);
-        var minutes = Math.floor(seconds / 60);
-        var hours = Math.floor(minutes / 60);
-        var days = Math.floor(hours / 24);
-
-        hours = hours - days * 24;
-        minutes = minutes - days * 24 * 60 - hours * 60;
-
-        document.getElementById("custom_royalmail").innerHTML = hours + "h:" + minutes + "m to place a " + selectedCarrier_name + " Order ";
-
-    }
-
-    if (carrier2 === "dpd") {
-        var selected_carrier = dpd;
-        var selectedCarrier = selected_carrier;
-
-        var selectedCarrier_name = carrier2;
-        var dateFuture = selectedCarrier;
-        var dateNow = new Date();
-
-        var seconds = Math.floor((dateFuture - dateNow) / 1000);
-        var minutes = Math.floor(seconds / 60);
-        var hours = Math.floor(minutes / 60);
-        var days = Math.floor(hours / 24);
-
-        hours = hours - days * 24;
-        minutes = minutes - days * 24 * 60 - hours * 60;
-
-        document.getElementById("custom_dpd").innerHTML = hours + "h:" + minutes + "m to place a " + selectedCarrier_name + " Order ";
-
-    }
-
-    });
-});
-</script>
 <?php
 $blockObj= $block->getLayout()->createBlock('Flavour\FusionShipping\Block\View');
 $visible = $blockObj->canShowBlock();
 
 ?>
-<h2>Custom Shipping Information</h2>
-
 
 <? if ($visible): ?>
+    <h5>Royal Mail Tracked 24 Hour</h5>
+    <p>Royal Mail Tracked 24 has an estimated delivery time of between 1-2 working
+    days and only applies to orders placed before 3.00pm Monday-Friday
+    (excluding public holidays) Orders placed after this time will be despatched
+    on the next working day. Customers living in remote locations may experience
+    slightly longer delivery times.</p>
+    <p>Orders placed on the Friday will still be delivered Saturday</p>
 
-<div>
-    <p id="custom_royalmail"></p>
-    <p id="custom_dpd"></p>
-</div>
+    <p>Please note that bank holidays will affect this service. Please get in
+    contact for more information.</p>
+
+
+    <h5>Royal Mail Tracked 48 Hour</h5>
+    <p>Royal Mail Tracked 48 has an estimated delivery time of between 2-3 working
+    days and only applies to orders placed before 3.00pm Monday-Friday
+    (excluding public holidays) Orders placed after this time will be despatched
+    on the next working day. Customers living in remote locations may experience
+    slightly longer delivery times.</p>
+
+
+    <p>Please note that bank holidays will affect this service. Please get in
+    contact for more information.</p>
+
+
+
+
+    <h5>Royal Mail First Class Postage – Free</h5>
+    <p>Royal Mail First Class post no signature required is an economy postal
+    service with an estimated delivery time of between 1-3 working days and only
+    applies to orders placed before 3.00pm Monday-Friday (excluding public
+    holidays) Orders placed after this time will be despatched on the next
+    working day. Customers living in remote locations may experience slightly
+    longer delivery times.</p>
+
+    <p>Please note that bank holidays will affect this service. Please get in
+    contact for more information.</p>
+
+
+    <h5>DPD - International</h5>
+    <p>Estimated Delivery to your destination is between 2-3 working days. This is a
+    tracked service.</p>
+
+
+
+    <h5>DPD Saturday Delivery</h5>
+    <p>Saturday delivery only applies to orders placed before 6:30pm on Friday. This
+    is a fully tracked service.</p>
+
+
+    <p>Please note that bank holidays will affect this service. Please get in
+    contact for more information.</p>
+
+
+    <p>Please note this delivery option is not available
+    for customers in Guernsey,
+    Jersey, Northern Ireland, Scottish highlands or Aberdeenshire.</p>
+
+
+
+    <h5>Free Shipping over £20</h5>
+    <p>Orders over £20 will receive free Royal Mail tracked delivery service and
+    will require a signature. Please allow 2 to 3 working days for delivery after
+    dispatch.</p>
+
+
+    <h5>First Class Postage – Free</h5>
+    <p>Free delivery without tracking (no signature required) is only available on
+    10ml
+    e-liquid orders placed with a maximum of 12 bottles per order with
+    Royal Mail’s first class delivery service. Please allow 1 to 3
+    working days for delivery after dispatch.</p>
+
+
+    <h5>DPD Next Working Day</h5>
+    <p>Next day delivery only applies to orders placed before 6:30pm Monday-Friday,
+    orders placed after this time will be despatched the next working day.
+    This is a fully tracked service. Orders placed on a Friday will not be
+    delivered on a Saturday using this service.</p>
+
+
+    <p>Please note that bank holidays will affect this service. Please get in
+        contact for more information.
+    </p>
+
+
+    <p>
+        Please note this delivery option is not available
+        for customers in Guernsey,
+        Jersey, Northern Ireland, Scottish highlands or Aberdeenshire.
+    </p>
 
 
 
 <? elseif ($other_condition): ?>
     <?= "i'm not visible"; ?>
-  <p>Custom Delivery Information unavailable</p>
+    <p>Custom Delivery Information unavailable</p>
 <? endif; ?>
 
 <?php
@@ -104,6 +112,5 @@ $visible = $blockObj->canShowBlock();
 //echo 'order' . $code;
 
 //$order->getShippingMethod();
-
 
 ?>

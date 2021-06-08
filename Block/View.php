@@ -1,5 +1,6 @@
 <?php
 namespace Flavour\FusionShipping\Block;
+use Flavour\FusionShipping\Model\Config;
 
 class View extends \Magento\Framework\View\Element\Template
 {
@@ -7,6 +8,11 @@ class View extends \Magento\Framework\View\Element\Template
      * @var \Flavour\FusionShipping\Helper\Data
      */
     protected $_dataHelper;
+    
+    /**
+     * @var Config
+     */
+    private $config;
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -16,19 +22,22 @@ class View extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Flavour\FusionShipping\Helper\Data $dataHelper,
+        Config $config,
         array $data = []
     ) {
         $this->_dataHelper = $dataHelper;
+        $this->config = $config;
         parent::__construct($context, $data);
     }
 
     public function canShowBlock()
     {
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/logger.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-        $logger->info("Is my module enabled? " . $this->_dataHelper->isModuleEnabled());
-
         return $this->_dataHelper->isModuleEnabled();
+    }
+
+    public function getDpdCutOff()
+    {
+        //change the below to match what its called in the database
+        return $this->config->getConfig('flavour_fusionshipping/dpd/cutofftime');
     }
 }
