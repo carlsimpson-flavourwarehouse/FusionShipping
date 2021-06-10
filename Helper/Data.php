@@ -3,7 +3,7 @@ namespace Flavour\FusionShipping\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    const MODULE_ENABLE = "custom_module/general/enable";
+    const MODULE_ENABLE = "Flavour_FusionShipping/enable/enable";
 
     public function getDefaultConfig($path)
     {
