@@ -24,6 +24,12 @@
     <td class="col col-carrier"
         attr="'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code"
         text="method.carrier_title" />
+    <!-- replace this here with the knockout call to update it -->
+    <td class="col col-carrier">
+        <a toggleCollapsible="'$collapsible_' + method.method_code">
+            <span data-bind="i18n: 'Custom date'"></span>
+        </a>
+    </td>
 </tr>
 <tr class="row row-error"
     if="method.error_message">

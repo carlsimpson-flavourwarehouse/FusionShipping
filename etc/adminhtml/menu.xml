@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Flavour_FusionShipping::greetings" title="Delivery Carrier Options" translate="title" module="Flavour_FusionShipping" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Flavour_FusionShipping" resource="Flavour_FusionShipping::greetings"/>
-        <add id="Flavour_FusionShipping::greetings_dpd" title="DPD" translate="title" module="Flavour_FusionShipping" parent="Flavour_FusionShipping::greetings" sortOrder="10" dependsOnModule="Flavour_FusionShipping" action="exampleadminnewpage/dpd" resource="Flavour_FusionShipping::greetings"/>
-    </menu>
-</config>
