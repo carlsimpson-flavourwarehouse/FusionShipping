@@ -1,6 +1,6 @@
 {
-  "name": "Flavour/FusionShipping",
-  "description": "A Shipping Module to ascertain your eligibility for delivery based on provider",
+  "name": "Flavour/FusionContentSecurityPolicy",
+  "description": "A Module to remove CSP errors from the console",
   "type": "magento2-module",
   "version": "1.0.0",
   "license": [

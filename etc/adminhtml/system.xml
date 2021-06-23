@@ -4,7 +4,7 @@
             <label>Flavour Warehouse</label>
         </tab>
         <!-- Custom  -->
-        <section id="custom_module" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="Flavour_FusionShipping" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>Delivery Carrier Settings</label>
             <tab>delivery-settings</tab>

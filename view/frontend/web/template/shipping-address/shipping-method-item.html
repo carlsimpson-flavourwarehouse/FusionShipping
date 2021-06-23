@@ -18,12 +18,18 @@
     <td class="col col-price">
         <each args="element.getRegion('price')" render="" />
     </td>
+    <!-- Dynamic Carrier -->
     <td class="col col-method"
         attr="'id': 'label_method_' + method.method_code + '_' + method.carrier_code"
         text="method.method_title" />
+    <!-- Shipping Method  -->
     <td class="col col-carrier"
         attr="'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code"
         text="method.carrier_title" />
+    <!-- replace this here with the knockout call to update it -->
+    <td class="col col-delivery-date">
+        <span data-bind="i18n: 'Custom date'"></span>
+    </td>
 </tr>
 <tr class="row row-error"
     if="method.error_message">
