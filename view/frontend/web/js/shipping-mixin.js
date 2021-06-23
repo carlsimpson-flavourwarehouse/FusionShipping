@@ -5,6 +5,7 @@ define([], function() {
             defaults: {
                 shippingMethodItemTemplate: 'Flavour_FusionShipping/shipping-address/shipping-method-item'
             },
+
         });
     };
 });

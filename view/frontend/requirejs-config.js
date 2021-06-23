@@ -5,12 +5,11 @@ var config = {
                 'Flavour_FusionShipping/js/hook':true
             },
             'Magento_Checkout/js/action/set-shipping-information': {
-                'Flavour_FusionShipping/js/action/set-shipping-information-mixin': true
+                'Flavour_FusionShipping/js/action/custom-shipping-information-mixin': true
             },
-            "Magento_Checkout/js/view/shipping": {
-                "Flavour_FusionShipping/js/shipping-mixin": true
+            'Magento_Checkout/js/view/shipping': {
+                'Flavour_FusionShipping/js/shipping-mixin': true
             }
         }
     }
-
 };
