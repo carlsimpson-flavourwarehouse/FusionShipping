@@ -80,25 +80,10 @@ $visible = $blockObj->canShowBlock();
     </p>
 
     <p>below is an example of getting this shipping methods from the block function</p>
-    
-    <?php $carriers = $block->getShippingMethods(); ?>
-<select name="shipping"  class="control-select">
-   <option value=""><?php /* @escapeNotVerified */ echo __('Please Select'); ?></option>
-   <?php foreach ($carriers as $carrier): ?>
-   <optgroup label="<?php /* @escapeNotVerified */ echo $carrier['label'] ?>">
-      <?php foreach ($carrier['value'] as $child): ?>
-      <option value="<?php /* @escapeNotVerified */ echo $child['value'] ?>">
-      <?php /* @escapeNotVerified */ echo $child['label']; ?>
-      </option>
-      <?php endforeach; ?>
-   </optgroup>
-   <?php endforeach; ?>
-</select>
-
 
 <?php } else { ?>
     <?= "i'm not visible"; ?>
-    <p>Custom Delivery Information unavailable</p>
+    <p>Delivery Information unavailable</p>
 <?php } ?>
 
 
@@ -110,7 +95,21 @@ $visible = $blockObj->canShowBlock();
 //$code = $orderItems->getShippingMethod();
 
 //echo 'order' . $code;
-
 //$order->getShippingMethod();
 
 ?>
+
+
+<?php //$carriers = $block->getShippingMethods(); ?>
+<!--<select name="shipping"  class="control-select">-->
+<!--    <option value="">--><?php ///* @escapeNotVerified */ echo __('Please Select'); ?><!--</option>-->
+<!--    --><?php //foreach ($carriers as $carrier): ?>
+<!--        <optgroup label="--><?php ///* @escapeNotVerified */ echo $carrier['label'] ?><!--">-->
+<!--            --><?php //foreach ($carrier['value'] as $child): ?>
+<!--                <option value="--><?php ///* @escapeNotVerified */ echo $child['value'] ?><!--">-->
+<!--                    --><?php ///* @escapeNotVerified */ echo $child['label']; ?>
+<!--                </option>-->
+<!--            --><?php //endforeach; ?>
+<!--        </optgroup>-->
+<!--    --><?php //endforeach; ?>
+<!--</select>-->

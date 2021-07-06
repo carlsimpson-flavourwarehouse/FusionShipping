@@ -1,11 +1,22 @@
-define([], function() {
+define([
+    'uiComponent'
+], function() {
     'use strict';
-    return function (Component) {
+
+    return function (
+        Component
+    ) {
         return Component.extend({
             defaults: {
-                shippingMethodItemTemplate: 'Flavour_FusionShipping/shipping-address/shipping-method-item'
+                message : 'Flavour_FusionShipping Module has loaded',
+                //template: 'Flavour_FusionShipping/shipping-address/shipping-method-item'
             },
 
+            initialize : function() {
+                this._super();
+
+                console.log(this.message);
+            }
         });
     };
 });

@@ -65,8 +65,8 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
             minutes = minutes - days * 24 * 60 - hours * 60;
 
             document.getElementById("custom_royalmail").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
-            document.getElementById("custom_php_royalmail").innerHTML = php_royalmail;
-            document.getElementById("royalmail").innerHTML = royalmail;
+            // document.getElementById("custom_php_royalmail").innerHTML = php_royalmail;
+            // document.getElementById("royalmail").innerHTML = royalmail;
 
         }
 
@@ -87,8 +87,8 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
             minutes = minutes - days * 24 * 60 - hours * 60;
 
             document.getElementById("custom_dpd").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
-            document.getElementById("custom_php_dpd").innerHTML = php_dpd;
-            document.getElementById("dpd").innerHTML = dpd;
+            // document.getElementById("custom_php_dpd").innerHTML = php_dpd;
+            // document.getElementById("dpd").innerHTML = dpd;
 
         }
 
@@ -96,23 +96,23 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
     });
 </script>
 
-<h5 class="timer-text">Hurry - Ends Soon!</h5>
+<h5 class="timer-text">Order Now for Next day Delivery!</h5>
 
 <?php if ($visible) { ?>
     <div>
-        <p>Live Hours remain</p>
+<!--        <p>There is</p>-->
         <p id="custom_royalmail"></p>
         <p id="custom_dpd"></p>
     </div>
 
     <div>
-        <p>Admin set variables</p>
+<!--        <p>Admin set variables</p>-->
         <p id="custom_php_royalmail"></p>
         <p id="custom_php_dpd"></p>
     </div>
 
     <div>
-        <p>Live Javascript rendered dates</p>
+<!--        <p>Live Javascript rendered dates</p>-->
         <p id="royalmail"></p>
         <p id="dpd"></p>
     </div>

@@ -53,7 +53,6 @@ define([
 ) {
     'use strict';
 
-
     var popUp = null;
 
     return Component.extend({
@@ -71,7 +70,6 @@ define([
         isNewAddressAdded: ko.observable(false),
         saveInAddressBook: 1,
         quoteIsVirtual: quote.isVirtual(),
-
 
         /**
          * @return {exports}
@@ -240,13 +238,7 @@ define([
         selectShippingMethod: function (shippingMethod) {
             selectShippingMethodAction(shippingMethod);
             checkoutData.setSelectedShippingRate(shippingMethod['carrier_code'] + '_' + shippingMethod['method_code']);
-            console.log("selectShippingMethod");
 
-            return true;
-        },
-
-        selectDeiveryCarrier: function () {
-            console.log("selectDeiveryCarrier");
             return true;
         },
 
