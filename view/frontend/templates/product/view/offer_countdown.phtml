@@ -65,9 +65,6 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
             minutes = minutes - days * 24 * 60 - hours * 60;
 
             document.getElementById("custom_royalmail").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
-            // document.getElementById("custom_php_royalmail").innerHTML = php_royalmail;
-            // document.getElementById("royalmail").innerHTML = royalmail;
-
         }
 
         if (carrier2 === "dpd") {
@@ -87,9 +84,6 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
             minutes = minutes - days * 24 * 60 - hours * 60;
 
             document.getElementById("custom_dpd").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
-            // document.getElementById("custom_php_dpd").innerHTML = php_dpd;
-            // document.getElementById("dpd").innerHTML = dpd;
-
         }
 
     });
@@ -100,21 +94,8 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
 
 <?php if ($visible) { ?>
     <div>
-<!--        <p>There is</p>-->
         <p id="custom_royalmail"></p>
         <p id="custom_dpd"></p>
-    </div>
-
-    <div>
-<!--        <p>Admin set variables</p>-->
-        <p id="custom_php_royalmail"></p>
-        <p id="custom_php_dpd"></p>
-    </div>
-
-    <div>
-<!--        <p>Live Javascript rendered dates</p>-->
-        <p id="royalmail"></p>
-        <p id="dpd"></p>
     </div>
 <?php } else { ?>
     <?= "i'm not visible"; ?>
