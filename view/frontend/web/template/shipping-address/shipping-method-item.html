@@ -28,11 +28,9 @@
         attr="'id': 'label_carrier_' + method.method_code + '_' + method.carrier_code"
         text="method.carrier_title" />
 
-    <!-- replace this here with the knockout call to update it -->
-    <!--comment out for now-->
-    <!--<td class="col col-delivery-date" data-bind="scope : 'shipping-mixin'">-->
-        <!--<span data-bind="text : message ">this here</span>-->
-    <!--</td>-->
+    <td class="col col-delivery-date">
+        <div data-bind="text: method.extension_attributes.description"></div>
+    </td>
 
 </tr>
 <tr class="row row-error"
