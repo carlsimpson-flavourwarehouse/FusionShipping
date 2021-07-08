@@ -8,12 +8,12 @@
                     ID: TOP MENU NAME ON THE USER ROLES SECTION TO ENABLE ACESS TO MODULE
                     TITLE: NAME OF THE MENU ITEM WHEN ADDED TO THE USER ROLES LIST
                 -->
-                <resource id="Flavour_FusionShipping::top" title="FlavourWarehouse">
+                <resource id="Flavour_FusionContentSecurityPolicy::top" title="FlavourWarehouse">
                     <!-- 
                         ID:LINKS TO SYSTEM.XML RESOURCE 
                         TITLE: ADDS TITLE TO USER ROLES SECTION UNDER THE NAME FLAVOUR WAREHOUSE
                     -->
-                    <resource id="Flavour_FusionShipping::shipping_config" title="Shipping"/>
+                    <resource id="Flavour_FusionContentSecurityPolicy::shipping_config" title="Shipping"/>
                 </resource>
             </resource>
         </resources>

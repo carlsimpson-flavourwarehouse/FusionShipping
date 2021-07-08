@@ -45,10 +45,10 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
         var php_royalmail = "<?php echo $royalmail_cutoff; ?>";
         var php_dpd = "<?php echo $dpd_cutoff; ?>";
 
-        var carrier1 = "royalmail";
-        var carrier2 = "dpd";
+        var carrier1 = "RoyalMail";
+        var carrier2 = "DPD";
 
-        if (carrier1 === "royalmail") {
+        if (carrier1 === "RoyalMail") {
             var selected_carrier = royalmail;
             var selectedCarrier = selected_carrier;
 
@@ -67,7 +67,7 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
             document.getElementById("custom_royalmail").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
         }
 
-        if (carrier2 === "dpd") {
+        if (carrier2 === "DPD") {
             var selected_carrier = dpd;
             var selectedCarrier = selected_carrier;
 

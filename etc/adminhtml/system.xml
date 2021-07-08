@@ -1,7 +1,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="delivery-settings" translate="label" sortOrder="500">
-            <label>Flavour Warehouse</label>
+        <tab id="fw_uspbanner" translate="label" sortOrder="1">
+            <label>FW Account Limit</label>
         </tab>
         <!-- Custom  -->
         <section id="Flavour_FusionShipping" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -78,11 +78,6 @@
                     </comment>
                     <frontend_model>Flavour\FusionShipping\Block\DatePicker</frontend_model>
                 </field>
-
-                <!--<field id="list_mode" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                    <!--<label>List Mode</label>-->
-                    <!--<source_model>Flavour\FusionShipping\Model\Config\Source\ListMode</source_model>-->
-                <!--</field>-->
             </group>
         </section>
     </system>
