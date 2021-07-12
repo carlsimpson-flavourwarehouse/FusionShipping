@@ -1,16 +1,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="fw_uspbanner" translate="label" sortOrder="1">
-            <label>FW Account Limit</label>
-        </tab>
-        <!-- Custom  -->
         <section id="Flavour_FusionShipping" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>Delivery Carrier Settings</label>
-            <tab>delivery-settings</tab>
+            <tab>fw_uspbanner</tab>
             <resource>Flavour_FusionShipping::config_my_module</resource>
 
-            <!-- General Configuration -->
             <group id="enable" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
                 <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -19,7 +14,6 @@
                 </field>
             </group>
 
-            <!-- Royal Mail Dynamic Cutoff Setting -->
             <group id="royalmail" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
                    showInStore="1">
                 <label>Royal Mail</label>
@@ -38,7 +32,6 @@
                 </field>
             </group>
 
-            <!-- DPD Dynamic Cutoff Setting -->
             <group id="dpd" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1"
                    showInStore="1">
                 <label>DPD</label>
@@ -57,7 +50,6 @@
                 </field>
             </group>
 
-            <!-- Custom Date Entries For Bank Holidays -->
             <group id="date" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
                    showInStore="1">
                 <label>Bank Holidays</label>

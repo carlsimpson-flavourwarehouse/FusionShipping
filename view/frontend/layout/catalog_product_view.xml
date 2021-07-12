@@ -1,19 +1,12 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
+
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!-- Product Countdown Timer -->
         <referenceContainer name="product.info.main">
             <block class="Magento\Catalog\Block\Product\View" after="product.info.price"
                    as="custom"
                    template="Flavour_FusionShipping::product/view/offer_countdown.phtml"/>
         </referenceContainer>
-        <!-- Shipping Information Tab -->
         <referenceBlock name="product.info.details">
             <block class="Flavour\FusionShipping\Block\View" name="shippinginfo.tab" as="shippinginfo" template="product/view/shipping_info.phtml" group="detailed_info" >
                 <arguments>

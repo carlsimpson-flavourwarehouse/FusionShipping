@@ -167,18 +167,14 @@ var trimYear = currentYear;
 var yearToString = trimYear.toString();
 var updatedYear = yearToString.substring(1);
 var todaysDate = d.getDate() + ":" + months[d.getMonth()] + ":" + updatedYear;
-//var todaysDate = "28:December:21";
 
 console.log("#todaysDate = " + todaysDate);
 
-// Bank Holidays 2021
 var BH_2021 = {
-    //BH_augustTEST: "6:June:21",
     BH_august30_21: "30:August:21",
     BH_december27_21: "27:December:21",
     BH_december28_21: "28:December:21"
 };
-// Bank Holidays 2022
 var BH_2022 = {
     BH_january_22: "01:January:22",
     BH_april15_22: "15:April:22",
@@ -187,10 +183,8 @@ var BH_2022 = {
 var logged = false;
 
 for (var key in BH_2021) {
-    //console.log(BH_2021[key]);
 
     if (todaysDate === BH_2021[key] || BH_2022[key]) {
-        //BH_2021[key] should be enhamced using https://www.api.gov.uk/gds/bank-holidays/#bank-holidays
         logged = true;
         console.log(
             "Today is a bank Holiday therefore the your est order delivery date will be affected"

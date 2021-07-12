@@ -1,18 +1,9 @@
 <?xml version="1.0"?>
-<!-- File: app/code/Pulsestorm/AclExample/etc/acl.xml -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <!-- 
-                    ID: TOP MENU NAME ON THE USER ROLES SECTION TO ENABLE ACESS TO MODULE
-                    TITLE: NAME OF THE MENU ITEM WHEN ADDED TO THE USER ROLES LIST
-                -->
                 <resource id="Flavour_FusionContentSecurityPolicy::top" title="FlavourWarehouse">
-                    <!-- 
-                        ID:LINKS TO SYSTEM.XML RESOURCE 
-                        TITLE: ADDS TITLE TO USER ROLES SECTION UNDER THE NAME FLAVOUR WAREHOUSE
-                    -->
                     <resource id="Flavour_FusionContentSecurityPolicy::shipping_config" title="Shipping"/>
                 </resource>
             </resource>
