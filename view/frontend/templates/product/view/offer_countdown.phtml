@@ -45,57 +45,69 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
         var php_royalmail = "<?php echo $royalmail_cutoff; ?>";
         var php_dpd = "<?php echo $dpd_cutoff; ?>";
 
-        var carrier1 = "RoyalMail";
+        var carrier1 = "Royal Mail";
         var carrier2 = "DPD";
 
-        if (carrier1 === "RoyalMail") {
-            var selected_carrier = royalmail;
-            var selectedCarrier = selected_carrier;
+        if (carrier1 === "Royal Mail") {
 
-            var selectedCarrier_name = carrier1;
-            var dateFuture = selectedCarrier;
-            var dateNow = new Date();
+            var rm_cutoff = new Date(2032, 5, 21, 15, 30, 0, 0);
+            var tmr = window.setInterval(function () {
+                var d = new Date();
+                var dif = rm_cutoff - d;
+                var s = parseInt(dif / 1000);
+                if (s < 0) {
+                    document.getElementById('custom_royalmail').innerHTML = 'Event starts';
+                    window.clearInterval(tmr);
+                    return;
+                }
+                var sec = s % 60;
+                var m = parseInt(s / 60);
+                var min = m % 60;
+                var h = parseInt(m / 60);
+                var hour = h % 24;
+                d = parseInt(h / 24);
 
-            var seconds = Math.floor((dateFuture - dateNow) / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var hours = Math.floor(minutes / 60);
-            var days = Math.floor(hours / 24);
+                document.getElementById('custom_royalmail').innerHTML = hour + ':' + min + ':' + sec + ' Remains to place your ' + carrier1 + ' Order!';
+            }, 1000);
 
-            hours = hours - days * 24;
-            minutes = minutes - days * 24 * 60 - hours * 60;
 
-            document.getElementById("custom_royalmail").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
         }
 
         if (carrier2 === "DPD") {
-            var selected_carrier = dpd;
-            var selectedCarrier = selected_carrier;
 
-            var selectedCarrier_name = carrier2;
-            var dateFuture = selectedCarrier;
-            var dateNow = new Date();
+            var dpd_cutoff = new Date(2032, 5, 21, 18, 30, 0, 0);
+            var tmr = window.setInterval(function () {
+                var d = new Date();
+                var dif = dpd_cutoff - d;
+                var s = parseInt(dif / 1000);
+                if (s < 0) {
+                    document.getElementById('custom_dpd').innerHTML = 'Event starts';
+                    window.clearInterval(tmr);
+                    return;
+                }
+                var sec = s % 60;
+                var m = parseInt(s / 60);
+                var min = m % 60;
+                var h = parseInt(m / 60);
+                var hour = h % 24;
+                d = parseInt(h / 24);
 
-            var seconds = Math.floor((dateFuture - dateNow) / 1000);
-            var minutes = Math.floor(seconds / 60);
-            var hours = Math.floor(minutes / 60);
-            var days = Math.floor(hours / 24);
-
-            hours = hours - days * 24;
-            minutes = minutes - days * 24 * 60 - hours * 60;
-
-            document.getElementById("custom_dpd").innerHTML = "<span class='bold-time'>" + hours + "h:" + minutes + "m </span>" + "to place a " + selectedCarrier_name + " order ";
+                document.getElementById('custom_dpd').innerHTML = hour + ':' + min + ':' + sec + ' Remains to place your ' + carrier2 + ' Order!';
+            }, 1000);
         }
 
     });
-    });
+});
 </script>
 
 <h5 class="timer-text">Order Now for Next day Delivery!</h5>
 
 <?php if ($visible) { ?>
     <div>
-        <p id="custom_royalmail"></p>
-        <p id="custom_dpd"></p>
+        <p id="custom_royalmail" class="bold-time"></p>
+        <p id="custom_dpd" class="bold-time"></p>
+
+
     </div>
 <?php } else { ?>
     <?= "i'm not visible"; ?>
