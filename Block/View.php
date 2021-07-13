@@ -71,6 +71,11 @@ class View extends \Magento\Framework\View\Element\Template
         return $this->config->getConfig('Flavour_FusionShipping/date/to_date');
     }
 
+    public function getShippingPolicyParameters() {
+        return $this->config->getConfig('shipping/shipping_policy/shipping_policy_content');
+    }
+
+
     public function getShippingMethods() {
         $activeCarriers = $this->shipconfig->getActiveCarriers();
     
