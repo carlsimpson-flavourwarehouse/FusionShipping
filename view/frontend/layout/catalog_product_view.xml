@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
-
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <referenceContainer name="product.info.main">
-            <block class="Magento\Catalog\Block\Product\View" after="product.info.price"
-                   as="custom"
-                   template="Flavour_FusionShipping::product/view/offer_countdown.phtml"/>
-        </referenceContainer>
-        <referenceBlock name="product.info.details">
-            <block class="Flavour\FusionShipping\Block\View" name="shippinginfo.tab" as="shippinginfo" template="product/view/shipping_info.phtml" group="detailed_info" >
-                <arguments>
-                    <argument translate="true" name="title" xsi:type="string">Shipping Information</argument>
-                </arguments>
-            </block>
-        </referenceBlock>
-    </body>
+	<body>
+		<referenceContainer name="product.info.extrahint">
+			<container name="product.info.countdown" label="product-info-countdown" htmlTag="div" htmlClass="product-info-countdown" before="-">
+				<block class="Magento\Catalog\Block\Product\View" as="product-info-countdown-timer" template="Flavour_FusionShipping::product/view/offer_countdown.phtml" />
+			</container>
+		</referenceContainer>
+		<referenceBlock name="product.info.details">
+			<block class="Flavour\FusionShipping\Block\View" name="shippinginfo.tab" as="shippinginfo" template="product/view/shipping_info.phtml" group="detailed_info">
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">
+						Shipping Information
+					</argument>
+				</arguments>
+			</block>
+		</referenceBlock>
+	</body>
 </page>

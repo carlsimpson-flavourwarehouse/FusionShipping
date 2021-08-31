@@ -7,109 +7,144 @@ $royalmail_cutoff = $blockObj->getRoyalMailCutOff();
 
 ?>
 
-<style>
-    .bold-time {
-        font-weight:800;
-    }
-</style>
-
 <script>
 
-    require([ 'jquery', 'jquery/ui'], function($){ $(document).ready(function($) {
+    require(['jquery', 'jquery/ui'], function ($) {
+        $(document).ready(function ($) {
 
-        Date.prototype.addHours = function (h) {
-            this.setHours(this.getHours() + h);
-            return this;
-        };
+            Date.prototype.addHours = function (h) {
+                this.setHours(this.getHours() + h);
+                return this;
+            };
 
-        var now = new Date();
-        var royalmail = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            15,
-            30,
-            0,
-            0
-        );
-        var dpd = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            18,
-            30,
-            0,
-            0
-        );
-
-        var php_royalmail = "<?php echo $royalmail_cutoff; ?>";
-        var php_dpd = "<?php echo $dpd_cutoff; ?>";
-
-        var carrier1 = "Royal Mail";
-        var carrier2 = "DPD";
-
-        if (carrier1 === "Royal Mail") {
-
-            var rm_cutoff = new Date(2032, 5, 21, 15, 30, 0, 0);
-            var tmr = window.setInterval(function () {
-                var d = new Date();
-                var dif = rm_cutoff - d;
-                var s = parseInt(dif / 1000);
-                if (s < 0) {
-                    document.getElementById('custom_royalmail').innerHTML = 'Event starts';
-                    window.clearInterval(tmr);
-                    return;
+            var xmlHttp;
+            function srvTime(){
+                try {
+                    //FF, Opera, Safari, Chrome
+                    xmlHttp = new XMLHttpRequest();
                 }
-                var sec = s % 60;
-                var m = parseInt(s / 60);
-                var min = m % 60;
-                var h = parseInt(m / 60);
-                var hour = h % 24;
-                d = parseInt(h / 24);
-
-                document.getElementById('custom_royalmail').innerHTML = hour + ':' + min + ':' + sec + ' Remains to place your ' + carrier1 + ' Order!';
-            }, 1000);
-
-
-        }
-
-        if (carrier2 === "DPD") {
-
-            var dpd_cutoff = new Date(2032, 5, 21, 18, 30, 0, 0);
-            var tmr = window.setInterval(function () {
-                var d = new Date();
-                var dif = dpd_cutoff - d;
-                var s = parseInt(dif / 1000);
-                if (s < 0) {
-                    document.getElementById('custom_dpd').innerHTML = 'Event starts';
-                    window.clearInterval(tmr);
-                    return;
+                catch (err1) {
+                    //IE
+                    try {
+                        xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+                    }
+                    catch (err2) {
+                        try {
+                            xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+                        }
+                        catch (eerr3) {
+                            //AJAX not supported, use CPU time.
+                            alert("AJAX not supported");
+                        }
+                    }
                 }
-                var sec = s % 60;
-                var m = parseInt(s / 60);
-                var min = m % 60;
-                var h = parseInt(m / 60);
-                var hour = h % 24;
-                d = parseInt(h / 24);
+                xmlHttp.open('HEAD',window.location.href.toString(),false);
+                xmlHttp.setRequestHeader("Content-Type", "text/html");
+                xmlHttp.send('');
+                return xmlHttp.getResponseHeader("Date");
+            }
 
-                document.getElementById('custom_dpd').innerHTML = hour + ':' + min + ':' + sec + ' Remains to place your ' + carrier2 + ' Order!';
-            }, 1000);
-        }
+            var st = srvTime();
+            var date = new Date(st);
 
+            var localTime = new Date();
+            console.log("Local machine time is: " + localTime + "<br>");
+            console.log("Server time is: " + date);
+
+            var timenow = new Date(st);
+            console.log(timenow);
+            var Hour24delivery = new Date(st).addHours(24);
+            var Hour48delivery = new Date(st).addHours(48);
+
+            var now = new Date(st);
+            var royalmail = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate(),
+                15,
+                30,
+                0,
+                0
+            );
+            var dpd = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate(),
+                18,
+                30,
+                0,
+                0
+            );
+
+            var php_royalmail = "<?php echo $royalmail_cutoff; ?>";
+            var php_dpd = "<?php echo $dpd_cutoff; ?>";
+
+            var carrier1 = "Royal Mail";
+            var carrier2 = "DPD";
+
+            if (carrier1 === "Royal Mail") {
+
+                var rm_cutoff = new Date(2032, 5, 21, 15, 30, 0, 0);
+                var tmr = window.setInterval(function () {
+                    var d = new Date();
+                    var dif = rm_cutoff - d;
+                    var s = parseInt(dif / 1000);
+                    if (s < 0) {
+                        document.getElementById('custom_royalmail').innerHTML = 'Event starts';
+                        window.clearInterval(tmr);
+                        return;
+                    }
+                    var sec = s % 60;
+                    var m = parseInt(s / 60);
+                    var min = m % 60;
+                    var h = parseInt(m / 60);
+                    var hour = h % 24;
+                    d = parseInt(h / 24);
+
+                    document.getElementById('custom_royalmail').innerHTML = hour + ' Hrs ' + min + ' Mins remining to place your order.';
+                    // document.getElementById('custom_royalmail').innerHTML = hour + ' Hrs ' + min + ' Mins ' + sec + ' Seconds remining to place your order.';
+                }, 1000);
+
+
+            }
+
+            if (carrier2 === "DPD") {
+
+                var dpd_cutoff = new Date(2032, 5, 21, 18, 30, 0, 0);
+                var tmr = window.setInterval(function () {
+                    var d = new Date();
+                    var dif = dpd_cutoff - d;
+                    var s = parseInt(dif / 1000);
+                    if (s < 0) {
+                        document.getElementById('custom_dpd').innerHTML = 'Event starts';
+                        window.clearInterval(tmr);
+                        return;
+                    }
+                    var sec = s % 60;
+                    var m = parseInt(s / 60);
+                    var min = m % 60;
+                    var h = parseInt(m / 60);
+                    var hour = h % 24;
+                    d = parseInt(h / 24);
+
+                    document.getElementById('custom_dpd').innerHTML = hour + ' Hrs ' + min + ' Mins remining to place your order.';
+                }, 1000);
+            }
+
+        });
     });
-});
 </script>
 
-<h5 class="timer-text">Order Now for Next day Delivery!</h5>
-
-<?php if ($visible) { ?>
-    <div>
-        <p id="custom_royalmail" class="bold-time"></p>
-        <p id="custom_dpd" class="bold-time"></p>
-
-
-    </div>
-<?php } else { ?>
-    <?= "i'm not visible"; ?>
+<div class="product-info-countdown__container">
+    <div class="product-info-countdown__container__title">Order Now For Next Day Delivery!</div>
+    <?php if ($visible) { ?>
+        <div class="product-info-countdown__container__rm-container">
+            <img src="/media/delivery-icons/rm_logo.png" alt="Royal Mail"><p id="custom_royalmail"></p>
+        </div>
+        <div class="product-info-countdown__container__dpd-container">
+            <img src="/media/delivery-icons/dpd_logo.png" alt="DPD"><p id="custom_dpd"></p>
+        </div>
+    <?php } else { ?>
     <p>Custom Delivery Information unavailable</p>
-<?php } ?>
+    <?php } ?>
+</div>
